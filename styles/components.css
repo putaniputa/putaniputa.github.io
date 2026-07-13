@@ -1,0 +1,184 @@
+/* ----- organic cards (no straight edges) --------------------------------- */
+.card {
+  position: relative;
+  /* clears room for the washi tape (::before) pinned above the top edge */
+  margin-top: 1.5rem;
+  background: var(--bg-2);
+  padding: 1rem 1rem;
+  border: 1.5px solid var(--line);
+  padding: 1.75rem 1.9rem;
+  /* lopsided radius = hand-drawn box */
+  border-radius: 22px 30px 24px 34px / 30px 24px 32px 22px;
+}
+
+/* gentle pinned-to-the-board tilt, alternating */
+.tilt-l { transform: rotate(-1.1deg); }
+.tilt-r { transform: rotate(1.1deg); }
+
+/* washi tape pinning the card down */
+.card::before {
+  content: "";
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  width: 70px;
+  height: 26px;
+  background: var(--tape, var(--flexoki-yellow-600));
+  opacity: .68;
+  transform: translateX(-50%) rotate(-3deg);
+  border-radius: 3px 8px 3px 8px / 7px 3px 7px 3px;
+  box-shadow: 0 3px 7px rgba(0,0,0,.18);
+  pointer-events: none;
+}
+.tilt-r::before { transform: translateX(-50%) rotate(3deg); }
+
+/* wavy hand-drawn divider between major regions */
+.divider {
+  display: block;
+  width: 100%;
+  height: 22px;
+  margin: 1rem 0;
+  color: var(--line);
+}
+
+/* ----- upcoming books grid ----------------------------------------------- */
+.books { display: grid; gap: 2.2rem; }
+.book { display: flex; gap: 1.5rem; align-items: flex-start; }
+.book .cover {
+  flex: 0 0 110px;
+  height: 150px;
+  display: grid; place-items: center;
+  text-align: center;
+  padding: .6rem;
+  color: var(--bg);
+  font-family: "Fraunces", serif;
+  font-weight: 600;
+  font-size: 1.05rem;
+  background: var(--accent);
+  border-radius: 8px 14px 10px 16px / 16px 10px 14px 8px;
+  box-shadow: 0 8px 20px rgba(0,0,0,.28);
+  /* a little spine line, still soft */
+  border-left: 1rem solid rgba(0,0,0,.18);
+}
+.book h3 { font-size: 1.5rem; color: var(--accent); }
+.book .sub { color: var(--tx); margin-bottom: .5rem; }
+.book p { color: var(--tx-muted); margin-bottom: 0; }
+
+@media (max-width: 560px) {
+  .book { flex-direction: column; align-items: center; text-align: center; }
+  .book .cover { flex: 0 0 auto; width: 140px; height: 190px; }
+}
+
+/* "coming soon" rubber stamp */
+.stamp {
+  display: inline-block;
+  margin-top: .8rem;
+  font-family: "Caveat", cursive;
+  font-size: 1.25rem;
+  color: var(--accent);
+  border: 2px solid var(--accent);
+  border-radius: 40% 60% 55% 45% / 55% 45% 60% 40%;
+  padding: .1rem .9rem;
+  transform: rotate(-3deg);
+  opacity: .85;
+}
+
+/* ----- archive ----------------------------------------------------------- */
+.archive .card { background: var(--bg); }
+.archive-grid { display: grid; gap: 2rem; grid-template-columns: 1fr; }
+.archive figure { margin: 0; }
+.archive img, .archive iframe {
+  width: 100%;
+  border-radius: 14px 20px 16px 22px / 20px 16px 22px 14px;
+  border: 1.5px solid var(--line);
+  display: block;
+}
+.archive iframe { aspect-ratio: 16 / 9; height: auto; }
+.archive figcaption { color: var(--tx-muted); margin-top: .6rem; font-size: .98rem; }
+.archive h3 { color: var(--tx); font-size: 1.35rem; }
+.feedback { list-style: none; padding: 0; margin: 1rem 0 0; }
+.feedback li { margin-bottom: .6rem; padding-left: .3rem; }
+
+/* ----- button ------------------------------------------------------------ */
+.btn {
+  display: inline-block;
+  margin-top: 1.4rem;
+  padding: .7rem 1.6rem;
+  font-family: "Fredoka", sans-serif;
+  font-weight: 500;
+  /* light text on a deep, vibrant fill — legible in both themes.
+     Override --btn-bg / --btn-fg inline for a differently-coloured button. */
+  color: var(--btn-fg, var(--paper));
+  background: var(--btn-bg, #b23a7d);
+  text-decoration: none;
+  border-radius: 30px 36px 30px 38px / 38px 30px 36px 30px;
+  box-shadow: 0 6px 18px rgba(0,0,0,.25);
+  transition: transform .15s ease;
+}
+.btn:hover { transform: translateY(-2px); color: var(--btn-fg, var(--paper)); }
+
+/* ----- misc text accents (used on about.html) ----------------------------- */
+.about .lead {
+  font-size: 1.2rem;
+  color: var(--ink);
+}
+
+.about .lead::before {
+    content: "“";
+    font-family: Fredoka, sans-serif;
+    font-size: 2.5rem;
+    line-height: 1;
+    color: var(--accent);
+    opacity: 0.35;
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+}
+
+.highlight {
+  font-weight: 800;
+  color: var(--orchid);
+}
+
+.signature {
+  font-family: "Fredoka", sans-serif;
+  font-weight: 600;
+  color: var(--orchid);
+  font-size: 1.3rem;
+  margin-top: 1.4em;
+}
+
+/* ----- footer disclaimer --------------------------------------------------- */
+.disclaimer {
+  padding-top: 20px;
+  font-size: .82rem;
+  line-height: 1.5;
+}
+
+/* ----- theme toggle ------------------------------------------------------ */
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: 2rem; height: 2rem;
+  font-size: 1.15rem;
+  cursor: pointer;
+  color: var(--tx);
+  background: var(--bg-2);
+  border: 1px solid var(--line);
+  border-radius: 50% 50% 52% 48% / 50% 52% 48% 50%;
+  box-shadow: 0 4px 14px rgba(0,0,0,.2);
+  transition: transform .2s ease;
+  line-height: 1;
+}
+.theme-toggle:hover { transform: rotate(-12deg) scale(1.06); }
+
+/* ----- reveal ------------------------------------------------------------ */
+.reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s ease, transform .7s ease; }
+.reveal.in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .scroll-cue { animation: none; }
+  html { scroll-behavior: auto; }
+}

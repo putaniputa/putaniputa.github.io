@@ -1,0 +1,80 @@
+/* ----- base -------------------------------------------------------------- */
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font: 1.125rem/1.65 "Nunito Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  color: var(--tx);
+  background-color: var(--bg);
+  
+  /* faint dotted "graph paper" so the page feels like a field notebook */
+  background-image:
+       radial-gradient(var(--grid) 1.4px, transparent 1.4px), /* Layer 1: Dots */
+       radial-gradient(circle, rgba(155, 47, 174, 0.10), transparent 70%), /* Layer 2: Blur 1 */
+       radial-gradient(circle, rgba(255, 182, 39, 0.10), transparent 70%), /* Layer 3: Blur 2 */
+       radial-gradient(circle, rgba(31, 182, 166, 0.10), transparent 70%); /* Layer 4: Blur 3 */
+
+  background-attachment: fixed;
+
+  /* Equal width/height circular tiles (not 100% 100%) so they stay true
+     circles instead of being stretched into ellipses on non-square
+     viewports — that stretch left a visible hard edge where the gradient
+     still had colour left at the tile boundary. Sized in vmin (not a
+     fixed px value) and kept smaller than the shortest viewport side, so
+     the tile never exceeds the viewport itself — a tile bigger than the
+     viewport flips background-position's math negative and throws the
+     blob (and its hard tile edge) into an unpredictable spot, which is
+     what caused visible lines on narrow mobile widths. Position places
+     each blob roughly where its old "circle at X% Y%" used to sit. */
+  background-position: 0 0, 12% 8%, 88% 18%, 78% 92%;
+  background-repeat: repeat, no-repeat, no-repeat, no-repeat;
+  background-size: 26px 26px, 70vmin 70vmin, 70vmin 70vmin, 70vmin 70vmin;
+
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  transition: background-color .4s ease, color .4s ease;
+}
+
+h1, h2, h3 {
+  font-family: "Fredoka", "Nunito", sans-serif;
+  font-weight: 600;
+  color: var(--heading);
+  line-height: 1.1;
+  margin: 0 0 .4em;
+}
+
+h1 {
+    font-size: clamp(2rem, 5vw, 3.1rem);
+}
+
+h2 {
+    font-size: clamp(1.5rem, 3.5vw, 2.1rem);
+}
+
+h3 {
+    font-size: 1.25rem;
+    color: var(--ink);
+}
+
+a {
+    color: var(--orchid);
+    text-decoration: none;
+    font-weight: 700;
+    transition: color .15s ease;
+}
+
+a:hover {
+    color: var(--flexoki-orange-600);
+}
+
+p { margin: 0 0 1em; }
+
+/* handwritten map annotations */
+.scribble {
+  font-family: "Caveat", cursive;
+  color: var(--tx-muted);
+  font-size: 1.5rem;
+  line-height: 1.1;
+}

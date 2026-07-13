@@ -1,0 +1,83 @@
+/* ----- theme tokens -------------------------------------------------------
+   Single source of truth for every CSS custom property on the site. Add new
+   tokens here (both the dark block and the light block), never elsewhere. */
+:root,
+:root[data-theme="dark"] {
+  --bg:      #100F0F;   /* base ink   flexoki-black */
+  --bg-2:    #1C1B1A;   /* raised     flexoki-950 */
+  --ui:      #282726;   /* flexok-900 */
+  --ui-2:    #343331;   /* flexok-850 */
+  --line:    #403E3C;   /* hairlines  flexoki-800 */
+  --tx-faint:#575653;   /* flexoki-700 */
+  --tx-muted:#878580;   /* flexoki-500 */
+  --tx:      #CECDC3;   /* body text  flexoki-200 */
+  --paper:   #FFFCF0;   /* flexoki-paper */
+
+  /* pastel accents (Flexoki 400s read soft on dark) */
+  --flexoki-red-600:     #D14D41;
+  --flexoki-orange-600:  #DA702C;
+  --flexoki-yellow-600:  #D0A215;
+  --flexoki-green-600:   #879A39;
+  --flexoki-cyan-600:    #3AA99F;
+  --flexoki-blue-600:    #4385BE;
+  --flexoki-purple-600:  #8B7EC8;
+  --flexoki-magenta-600: #CE5D97;
+
+  /* faint dot of the field-notebook grid */
+  --grid: #282726; /* flexoki-900 */
+
+  /* brand purple accents (headings, links, signature, header/footer chrome) */
+  --heading:   #dcb8ef;
+  --orchid:    #c98be0;
+  --dark-orchid: #b23a7d;
+  --ink:       #ece6f2;
+  --muted:     #a89db8;
+  --sun:       #ffc24d;
+  --header-bg: rgba(21, 17, 28, 0.82);
+  --footer-bg: #0e0a15;
+
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.35);
+  --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.45);
+  --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.55);
+}
+
+:root[data-theme="light"] {
+  --bg:      #FFFCF0;   /* flexoki-paper */
+  --bg-2:    #F2F0E5;   /* flexoki-50 */
+  --ui:      #E6E4D9;   /* flexoki-100 */
+  --ui-2:    #DAD8CE;   /* flexoki-150 */
+  --line:    #CECDC3;   /* flexoki-200 */
+  --tx-faint:#B7B5AC;   /* flexoki-300 */
+  --tx-muted:#6F6E69;   /* flexoki-600 */
+  --tx:      #100F0F;   /* flexoki-black */
+  --paper:   #FFFCF0;   /* flexoki-paper */
+
+  /* Flexoki 600s for ink-on-paper contrast */
+  --flexoki-red-600:     #AF3029;
+  --flexoki-orange-600:  #BC5215;
+  --flexoki-yellow-600:  #AD8301;
+  --flexoki-green-600:   #66800B;
+  --flexoki-cyan-600:    #24837B;
+  --flexoki-blue-600:    #205EA6;
+  --flexoki-purple-600:  #5E409D;
+  --flexoki-magenta-600: #A02F6F;
+
+  --grid: #E6E4D9;
+
+  --heading:   #6c2086;
+  --orchid:    #9b2fae;
+  --ink:       #352b45;
+  --muted:     #6f6781;
+  --sun:       #ffb627;
+  --header-bg: rgba(253, 250, 255, 0.82);
+  --footer-bg: rgba(253, 250, 255, 0.82);
+
+  --shadow-sm: 0 2px 8px rgba(76, 29, 107, 0.06);
+  --shadow-md: 0 10px 30px rgba(76, 29, 107, 0.10);
+  --shadow-lg: 0 20px 50px rgba(76, 29, 107, 0.16);
+}
+
+/* theme-independent layout constant, used by .wrap */
+:root {
+  --maxw: 920px;
+}
